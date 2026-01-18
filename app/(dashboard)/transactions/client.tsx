@@ -75,9 +75,9 @@ const TransactionClient = () => {
 
   const transactions: any[] = transactionsData.map((t: Transaction) => ({
     id: t.id,
-    userName: t.user?.id ? (
+    userName: t.userId ? (
       <Link
-        href={`/users/${t.user.id}`}
+        href={`/users/${t.userId}`}
         className="text-teal hover:underline font-medium"
       >
         {t.user?.name || t.recipient || "N/A"}
