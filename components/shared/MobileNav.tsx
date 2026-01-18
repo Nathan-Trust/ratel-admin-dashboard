@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -41,7 +42,7 @@ export function MobileNav() {
   return (
     <>
       <div className="lg:hidden flex items-center justify-between bg-teal-bg rounded-3xl p-4 relative z-50">
-        <h1 className="text-xl font-medium font-roboto">LOGO</h1>
+        <Image src="/ratel.svg" alt="Ratel Logo" width={100} height={32} className="h-8 w-auto" />
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="p-2 hover:bg-teal-light rounded-lg transition-colors relative z-50"
@@ -73,7 +74,7 @@ export function MobileNav() {
               className="lg:hidden fixed top-0 left-0 h-full w-[280px] bg-teal-bg p-6 z-50 shadow-2xl overflow-y-auto flex flex-col"
             >
               <div className="mb-8">
-                <h1 className="text-2xl font-medium font-roboto">LOGO</h1>
+                <Image src="/ratel.svg" alt="Ratel Logo" width={120} height={40} className="h-10 w-auto" />
               </div>
 
               <div className="mb-4">

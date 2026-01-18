@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -35,7 +36,13 @@ export function Sidebar() {
   return (
     <aside className="w-[260px] h-full rounded-3xl bg-teal-bg p-4 flex flex-col overflow-hidden">
       <div className="mb-6 shrink-0">
-        <h1 className="text-2xl font-medium font-roboto">LOGO</h1>
+        <Image
+          src="/ratel.svg"
+          alt="Ratel Logo"
+          width={120}
+          height={40}
+          className="h-10 w-auto"
+        />
       </div>
 
       <nav className="flex-1 overflow-y-auto no-scrollbar">
@@ -52,7 +59,7 @@ export function Sidebar() {
                   "flex items-center gap-3 px-3 py-2.5 rounded-md font-montserrat text-base font-medium transition-colors",
                   isActive
                     ? "bg-teal text-white"
-                    : "text-[#000107] hover:bg-teal-light"
+                    : "text-[#000107] hover:bg-teal-light",
                 )}
               >
                 <Icon className="w-5 h-5 shrink-0" strokeWidth={1.5} />
@@ -70,7 +77,7 @@ export function Sidebar() {
           disabled={isLoggingOut}
           className={cn(
             "flex items-center gap-3 px-3 py-2.5 rounded-md font-montserrat text-base font-medium transition-colors w-full",
-            "text-red-500 hover:bg-red-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            "text-red-500 hover:bg-red-50 disabled:opacity-50 disabled:cursor-not-allowed",
           )}
         >
           <LogOut className="w-5 h-5 shrink-0" strokeWidth={1.5} />

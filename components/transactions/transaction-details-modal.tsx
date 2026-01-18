@@ -42,7 +42,7 @@ export function TransactionDetailsModal({
         <div className="mb-4">
           <span
             className={`inline-block px-3 py-1 rounded-full text-xs font-medium font-montserrat ${getTransactionStatusBadge(
-              transaction.status
+              transaction.status,
             )}`}
           >
             {transaction.status}

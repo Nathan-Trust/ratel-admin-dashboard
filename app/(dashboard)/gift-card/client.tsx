@@ -95,6 +95,7 @@ const GiftCardClient = () => {
     (tx: Transaction) => ({
       id: tx.id,
       giftCardName: tx.package || "Unknown",
+      provider: tx.provider || "N/A",
       country: tx.country || "N/A",
       recipient: tx.recipient || "N/A",
       dateAdded: formatDate(tx.createdAt),

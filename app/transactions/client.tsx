@@ -20,7 +20,7 @@ interface Transaction {
 const getStatusElement = (status: TransactionStatus) => (
   <span
     className={`text-sm font-medium font-montserrat ${getTransactionStatusColor(
-      status
+      status,
     )}`}
   >
     {status}
