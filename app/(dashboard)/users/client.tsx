@@ -81,7 +81,7 @@ const UserClient = () => {
   const headers = [
     "USER NAME",
     "EMAIL ADDRESS",
-    "NO. OF PURCHASES",
+    // "NO. OF PURCHASES",
     "DATE JOINED",
     "STATUS",
     "ACTIONS",
@@ -90,7 +90,7 @@ const UserClient = () => {
   const headerKeyMap = {
     "USER NAME": "userName",
     "EMAIL ADDRESS": "emailAddress",
-    "NO. OF PURCHASES": "noOfPurchases",
+    // "NO. OF PURCHASES": "noOfPurchases",
     "DATE JOINED": "dateJoined",
     STATUS: "status",
     ACTIONS: "actions",
