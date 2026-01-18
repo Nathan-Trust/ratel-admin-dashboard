@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import CustomTable from "@/components/shared/CustomTable";
 import { CustomTableSkeleton } from "@/components/shared/CustomTableSkeleton";
@@ -80,7 +81,7 @@ export function TransactionsTable() {
 
   const headers = [
     "INVOICE ID",
-    // "USER NAME",
+    "USER NAME",
     // "GIFT CARD TYPE",
     "COUNTRY",
     "PROVIDER",
@@ -91,7 +92,7 @@ export function TransactionsTable() {
 
   const headerKeyMap = {
     "INVOICE ID": "id",
-    // "USER NAME": "userName",
+    "USER NAME": "userName",
     // "GIFT CARD TYPE": "giftCardType",
     COUNTRY: "country",
     PROVIDER: "provider",
@@ -103,7 +104,16 @@ export function TransactionsTable() {
   const transactions: Record<string, React.ReactNode>[] =
     recentTransactions.map((t: Transaction) => ({
       id: t.id,
-      userName: t.user?.name || "N/A",
+      userName: t.user?.id ? (
+        <Link
+          href={`/users/${t.user.id}`}
+          className="text-teal hover:underline font-medium"
+        >
+          {t.user?.name || "N/A"}
+        </Link>
+      ) : (
+        t.user?.name || "N/A"
+      ),
       giftCardType: t.package || "N/A",
       country: t.country || "N/A",
       provider: t.provider || "N/A",

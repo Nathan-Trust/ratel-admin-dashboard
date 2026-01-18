@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import CustomTable from "@/components/shared/CustomTable";
 import { TransactionDetailsModal } from "@/components/transactions/transaction-details-modal";
 import { CustomTableSkeleton } from "@/components/shared/CustomTableSkeleton";
@@ -74,7 +75,16 @@ const TransactionClient = () => {
 
   const transactions: any[] = transactionsData.map((t: Transaction) => ({
     id: t.id,
-    userName: t.user?.name || t.recipient || "N/A",
+    userName: t.user?.id ? (
+      <Link
+        href={`/users/${t.user.id}`}
+        className="text-teal hover:underline font-medium"
+      >
+        {t.user?.name || t.recipient || "N/A"}
+      </Link>
+    ) : (
+      t.user?.name || t.recipient || "N/A"
+    ),
     giftCardType: t.package || "N/A",
     country: t.country || "N/A",
     provider: t.provider || "N/A",

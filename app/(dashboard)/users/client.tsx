@@ -104,7 +104,7 @@ const UserClient = () => {
         <FetchLoadingAndEmptyState
           isLoading={isLoading}
           numberOfSkeleton={1}
-          contentClassName="block"
+          contentClassName="block w-full"
           skeleton={
             <>
               <Skeleton className="h-[120px] rounded-3xl" />
