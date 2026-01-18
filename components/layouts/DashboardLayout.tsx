@@ -17,7 +17,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
           <Sidebar />
         </div>
 
-        <div className="flex-1 overflow-y-auto overflow-x-hidden no-scrollbar min-w-0 lg:pt-0 pt-0">
+        <div className="flex-1 w-full flex-shrink-0 overflow-y-auto overflow-x-hidden no-scrollbar min-w-0 lg:pt-0 pt-0">
           {children}
         </div>
       </div>
