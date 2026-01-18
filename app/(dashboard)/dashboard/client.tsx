@@ -67,7 +67,7 @@ const DashboardClient = () => {
               // percentage="12%"
             />
             <StatCard
-              title="Successful Transactions"
+              title="Today Transaction Count"
               value={String(overview?.todayTxCount || 0)}
               // percentage="12%"
             />
