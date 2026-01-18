@@ -81,7 +81,7 @@ export function TransactionsTable() {
 
   const headers = [
     "INVOICE ID",
-    "USER NAME",
+    // "USER NAME",
     // "GIFT CARD TYPE",
     "COUNTRY",
     "PROVIDER",
@@ -92,7 +92,7 @@ export function TransactionsTable() {
 
   const headerKeyMap = {
     "INVOICE ID": "id",
-    "USER NAME": "userName",
+    // "USER NAME": "userName",
     // "GIFT CARD TYPE": "giftCardType",
     COUNTRY: "country",
     PROVIDER: "provider",

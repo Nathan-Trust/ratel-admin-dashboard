@@ -42,7 +42,13 @@ export function MobileNav() {
   return (
     <>
       <div className="lg:hidden flex items-center justify-between bg-teal-bg rounded-3xl p-4 relative z-50">
-        <Image src="/ratel.svg" alt="Ratel Logo" width={100} height={32} className="h-8 w-auto" />
+        <Image
+          src="/ratel.svg"
+          alt="Ratel Logo"
+          width={100}
+          height={32}
+          className="h-8 w-auto"
+        />
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="p-2 hover:bg-teal-light rounded-lg transition-colors relative z-50"
@@ -74,7 +80,13 @@ export function MobileNav() {
               className="lg:hidden fixed top-0 left-0 h-full w-[280px] bg-teal-bg p-6 z-50 shadow-2xl overflow-y-auto flex flex-col"
             >
               <div className="mb-8">
-                <Image src="/ratel.svg" alt="Ratel Logo" width={120} height={40} className="h-10 w-auto" />
+                <Image
+                  src="/ratel.svg"
+                  alt="Ratel Logo"
+                  width={120}
+                  height={40}
+                  className="h-10 w-auto"
+                />
               </div>
 
               <div className="mb-4">
@@ -101,7 +113,7 @@ export function MobileNav() {
                           "flex items-center gap-3 px-3 py-2.5 rounded-md font-montserrat text-base font-medium transition-colors",
                           isActive
                             ? "bg-teal text-white"
-                            : "text-[#000107] hover:bg-teal-light"
+                            : "text-[#000107] hover:bg-teal-light",
                         )}
                       >
                         <Icon className="w-5 h-5 shrink-0" strokeWidth={1.5} />
@@ -124,7 +136,7 @@ export function MobileNav() {
                   disabled={isLoggingOut}
                   className={cn(
                     "flex items-center gap-3 px-3 py-2.5 rounded-md font-montserrat text-base font-medium transition-colors w-full",
-                    "text-red-500 hover:bg-red-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    "text-red-500 hover:bg-red-50 disabled:opacity-50 disabled:cursor-not-allowed",
                   )}
                 >
                   <LogOut className="w-5 h-5 shrink-0" strokeWidth={1.5} />
