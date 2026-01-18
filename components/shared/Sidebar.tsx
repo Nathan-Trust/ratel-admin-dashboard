@@ -19,8 +19,8 @@ import { useLogout } from "@/hooks/use-auth";
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", path: AdminRoutes.DASHBOARD },
   { icon: Users, label: "Users", path: AdminRoutes.USERS },
-  { icon: Gift, label: "Gift Cards", path: AdminRoutes.GIFT_CARD },
-  { icon: Wallet, label: "Transactions", path: AdminRoutes.TRANSACTIONS },
+// { icon: Gift, label: "Gift Cards", path: AdminRoutes.GIFT_CARD },
+ { icon: Wallet, label: "Transactions", path: AdminRoutes.TRANSACTIONS },
   // { icon: TrendingUp, label: "Finance", path: AdminRoutes.FINANCE },
   // { icon: Settings, label: "Settings", path: AdminRoutes.SETTINGS },
 ];
