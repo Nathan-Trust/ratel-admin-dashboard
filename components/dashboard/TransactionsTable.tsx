@@ -1,9 +1,11 @@
 "use client";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import CustomTable from "@/components/shared/CustomTable";
 import { CustomTableSkeleton } from "@/components/shared/CustomTableSkeleton";
 import { FetchLoadingAndEmptyState } from "@/components/shared/FetchLoadinAndEmptyState";
+import { TransactionDetailsModal } from "@/components/transactions/transaction-details-modal";
 import { useRecentTransactions } from "@/hooks/use-transactions";
 import { Transaction, TransactionStatusCode } from "@/models/admin";
 
@@ -43,15 +45,43 @@ const formatCurrency = (amount: number) => {
   return `₦${amount.toLocaleString()}`;
 };
 
+const formatDateTime = (dateString: string) => {
+  const date = new Date(dateString);
+  const formattedDate = date.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+  const formattedTime = date
+    .toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    })
+    .toLowerCase();
+  return `${formattedDate} - ${formattedTime}`;
+};
+
 export function TransactionsTable() {
   const router = useRouter();
   const { data, isLoading } = useRecentTransactions();
   const recentTransactions = data?.data?.items || [];
+  const [selectedTransaction, setSelectedTransaction] = useState<any>(null);
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+
+  const handleViewTransaction = (transaction: Transaction) => {
+    setSelectedTransaction({
+      ...transaction,
+      status: getStatusLabel(transaction.status as TransactionStatusCode),
+      dateTime: formatDateTime(transaction.createdAt),
+    });
+    setIsDetailsOpen(true);
+  };
 
   const headers = [
     "INVOICE ID",
-    "USER NAME",
-    "GIFT CARD TYPE",
+    // "USER NAME",
+    // "GIFT CARD TYPE",
     "COUNTRY",
     "AMOUNT",
     "STATUS",
@@ -60,8 +90,8 @@ export function TransactionsTable() {
 
   const headerKeyMap = {
     "INVOICE ID": "id",
-    "USER NAME": "userName",
-    "GIFT CARD TYPE": "giftCardType",
+    // "USER NAME": "userName",
+    // "GIFT CARD TYPE": "giftCardType",
     COUNTRY: "country",
     AMOUNT: "amount",
     STATUS: "status",
@@ -77,37 +107,50 @@ export function TransactionsTable() {
       amount: formatCurrency(t.amount),
       status: getStatusElement(t.status as TransactionStatusCode),
       actions: (
-        <button className="px-3 py-1.5 rounded-xl border border-[#8C8C8C] bg-teal text-white text-sm font-semibold font-montserrat hover:bg-teal/90 transition-colors">
+        <button
+          onClick={() => handleViewTransaction(t)}
+          className="px-3 py-1.5 rounded-xl border border-[#8C8C8C] bg-teal text-white text-sm font-semibold font-montserrat hover:bg-teal/90 transition-colors"
+        >
           View
         </button>
       ),
     }));
 
   return (
-    <FetchLoadingAndEmptyState
-      isLoading={isLoading}
-      numberOfSkeleton={1}
-      skeleton={
-        <CustomTableSkeleton
+    <>
+      <FetchLoadingAndEmptyState
+        isLoading={isLoading}
+        numberOfSkeleton={1}
+        skeleton={
+          <CustomTableSkeleton
+            title="Transactions"
+            headers={headers}
+            rows={5}
+            showViewAll={true}
+          />
+        }
+        data={transactions.length}
+        emptyState={
+          <p className="text-center text-gray-500 py-8">
+            No recent transactions
+          </p>
+        }
+      >
+        <CustomTable
           title="Transactions"
           headers={headers}
-          rows={5}
+          data={transactions}
+          headerKeyMap={headerKeyMap}
           showViewAll={true}
+          onViewAll={() => router.push("/transactions")}
         />
-      }
-      data={transactions.length}
-      emptyState={
-        <p className="text-center text-gray-500 py-8">No recent transactions</p>
-      }
-    >
-      <CustomTable
-        title="Transactions"
-        headers={headers}
-        data={transactions}
-        headerKeyMap={headerKeyMap}
-        showViewAll={true}
-        onViewAll={() => router.push("/transactions")}
+      </FetchLoadingAndEmptyState>
+
+      <TransactionDetailsModal
+        isOpen={isDetailsOpen}
+        onClose={() => setIsDetailsOpen(false)}
+        transaction={selectedTransaction}
       />
-    </FetchLoadingAndEmptyState>
+    </>
   );
 }
