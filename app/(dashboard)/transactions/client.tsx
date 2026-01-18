@@ -77,6 +77,7 @@ const TransactionClient = () => {
     userName: t.user?.name || t.recipient || "N/A",
     giftCardType: t.package || "N/A",
     country: t.country || "N/A",
+    provider: t.provider || "N/A",
     amount: formatCurrency(Number(t.amount)),
     status: getStatusElement(t.status as TransactionStatusCode),
     actions: (
@@ -93,6 +94,7 @@ const TransactionClient = () => {
     "USER NAME",
     "GIFT CARD TYPE",
     "COUNTRY",
+    "PROVIDER",
     "AMOUNT",
     "STATUS",
     "ACTIONS",
@@ -102,6 +104,7 @@ const TransactionClient = () => {
     "USER NAME": "userName",
     "GIFT CARD TYPE": "giftCardType",
     COUNTRY: "country",
+    PROVIDER: "provider",
     AMOUNT: "amount",
     STATUS: "status",
     ACTIONS: "actions",

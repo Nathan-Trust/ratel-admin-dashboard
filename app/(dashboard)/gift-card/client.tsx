@@ -116,6 +116,7 @@ const GiftCardClient = () => {
 
   const headers = [
     "GIFT CARD",
+    "PROVIDER",
     "COUNTRY",
     "RECIPIENT",
     "DATE",
@@ -126,6 +127,7 @@ const GiftCardClient = () => {
 
   const headerKeyMap = {
     "GIFT CARD": "giftCardName",
+    "PROVIDER": "provider",
     COUNTRY: "country",
     RECIPIENT: "recipient",
     DATE: "dateAdded",

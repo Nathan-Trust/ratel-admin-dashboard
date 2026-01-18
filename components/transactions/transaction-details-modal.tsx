@@ -15,6 +15,7 @@ interface TransactionDetailsModalProps {
     userName: string;
     giftCardType: string;
     country: string;
+    provider: string;
     amount: string;
     status: TransactionStatus;
     dateTime: string;
@@ -51,7 +52,7 @@ export function TransactionDetailsModal({
         {/* Details */}
         <div className="space-y-3">
           <div className="space-y-2.5">
-            <div className="flex justify-between items-center py-2 border-b border-[#F0F0F0]">
+            {/* <div className="flex justify-between items-center py-2 border-b border-[#F0F0F0]">
               <p className="text-sm font-medium font-montserrat text-[#8C8C8C]">
                 Name:
               </p>
@@ -67,7 +68,7 @@ export function TransactionDetailsModal({
               <p className="text-sm font-medium font-montserrat text-[#1F1F1F]">
                 {transaction.giftCardType}
               </p>
-            </div>
+            </div> */}
 
             <div className="flex justify-between items-center py-2 border-b border-[#F0F0F0]">
               <p className="text-sm font-medium font-montserrat text-[#8C8C8C]">
@@ -80,6 +81,15 @@ export function TransactionDetailsModal({
 
             <div className="flex justify-between items-center py-2 border-b border-[#F0F0F0]">
               <p className="text-sm font-medium font-montserrat text-[#8C8C8C]">
+                Provider:
+              </p>
+              <p className="text-sm font-medium font-montserrat text-[#1F1F1F]">
+                {transaction.provider}
+              </p>
+            </div>
+
+            <div className="flex justify-between items-center py-2 border-b border-[#F0F0F0]">
+              <p className="text-sm font-medium font-montserrat text-[#8C8C8C]">
                 Amount:
               </p>
               <p className="text-sm font-semibold font-montserrat text-[#1F1F1F]">
@@ -87,14 +97,14 @@ export function TransactionDetailsModal({
               </p>
             </div>
 
-            <div className="flex justify-between items-center py-2">
+            {/* <div className="flex justify-between items-center py-2">
               <p className="text-sm font-medium font-montserrat text-[#8C8C8C]">
                 Date & Time:
               </p>
               <p className="text-sm font-medium font-montserrat text-[#1F1F1F]">
                 {transaction.dateTime}
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
 

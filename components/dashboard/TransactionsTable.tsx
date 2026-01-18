@@ -83,6 +83,7 @@ export function TransactionsTable() {
     // "USER NAME",
     // "GIFT CARD TYPE",
     "COUNTRY",
+    "PROVIDER",
     "AMOUNT",
     "STATUS",
     "ACTIONS",
@@ -93,6 +94,7 @@ export function TransactionsTable() {
     // "USER NAME": "userName",
     // "GIFT CARD TYPE": "giftCardType",
     COUNTRY: "country",
+    PROVIDER: "provider",
     AMOUNT: "amount",
     STATUS: "status",
     ACTIONS: "actions",
@@ -104,6 +106,7 @@ export function TransactionsTable() {
       userName: t.user?.name || "N/A",
       giftCardType: t.package || "N/A",
       country: t.country || "N/A",
+      provider: t.provider || "N/A",
       amount: formatCurrency(t.amount),
       status: getStatusElement(t.status as TransactionStatusCode),
       actions: (
