@@ -161,7 +161,7 @@ const FinanceClient = () => {
         >
           <CustomTable
             headers={headers}
-            data={revenueBreakdownData as unknown as Record<string, unknown>[]}
+            data={revenueBreakdownData as any}
             headerKeyMap={headerKeyMap}
             showViewAll={false}
           />
