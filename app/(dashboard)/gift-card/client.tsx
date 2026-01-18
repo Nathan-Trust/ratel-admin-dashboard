@@ -39,12 +39,15 @@ const formatDate = (dateString: string) => {
 const getStatusBadge = (status: number) => {
   const statusMap: Record<number, { label: string; className: string }> = {
     0: {
+      label: "Cancelled",
+      className: "bg-red/10 text-red",
+    },
+    1: {
       label: "Pending",
       className: "bg-orange-pending/10 text-orange-pending",
     },
-    1: { label: "Success", className: "bg-teal/10 text-teal" },
-    2: { label: "Failed", className: "bg-red/10 text-red" },
-    3: { label: "Failed", className: "bg-red/10 text-red" },
+    2: { label: "Processing", className: "bg-blue-500/10 text-blue-500" },
+    3: { label: "Completed", className: "bg-teal/10 text-teal" },
   };
   const statusInfo = statusMap[status] || {
     label: "Unknown",
@@ -71,7 +74,7 @@ const GiftCardClient = () => {
 
   // Filter transactions to only show gift card transactions (type: 1)
   const transactionsData = (data?.data?.transactions || []).filter(
-    (tx: Transaction) => tx.type === 1
+    (tx: Transaction) => tx.type === 1,
   );
 
   const handleViewTransaction = (transaction: Transaction) => {
@@ -84,7 +87,7 @@ const GiftCardClient = () => {
         (tx: Transaction) =>
           tx.package?.toLowerCase().includes(searchQuery.toLowerCase()) ||
           tx.recipient?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          tx.country?.toLowerCase().includes(searchQuery.toLowerCase())
+          tx.country?.toLowerCase().includes(searchQuery.toLowerCase()),
       )
     : transactionsData;
 
@@ -108,7 +111,7 @@ const GiftCardClient = () => {
           </button>
         </div>
       ),
-    })
+    }),
   );
 
   const headers = [

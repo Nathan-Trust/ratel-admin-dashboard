@@ -8,16 +8,16 @@ import { useRecentTransactions } from "@/hooks/use-transactions";
 import { Transaction, TransactionStatusCode } from "@/models/admin";
 
 const getStatusLabel = (
-  status: TransactionStatusCode
-): "Pending" | "Success" | "Failed" => {
+  status: TransactionStatusCode,
+): "Cancelled" | "Pending" | "Processing" | "Completed" => {
   const statusMap: Record<
     TransactionStatusCode,
-    "Pending" | "Success" | "Failed"
+    "Cancelled" | "Pending" | "Processing" | "Completed"
   > = {
-    0: "Pending",
-    1: "Success",
-    2: "Failed",
-    3: "Failed",
+    0: "Cancelled",
+    1: "Pending",
+    2: "Processing",
+    3: "Completed",
   };
   return statusMap[status] || "Pending";
 };
@@ -28,9 +28,10 @@ const getStatusElement = (status: TransactionStatusCode) => {
     <span
       className={cn(
         "text-sm font-medium font-montserrat",
+        statusLabel === "Cancelled" && "text-red-failed",
         statusLabel === "Pending" && "text-orange-pending",
-        statusLabel === "Success" && "text-green-success",
-        statusLabel === "Failed" && "text-red-failed"
+        statusLabel === "Processing" && "text-blue-500",
+        statusLabel === "Completed" && "text-green-success",
       )}
     >
       {statusLabel}

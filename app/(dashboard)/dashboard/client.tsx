@@ -23,7 +23,7 @@ const DashboardClient = () => {
     <main className="w-full max-w-[1100px] pb-6">
       <Header />
 
-      <div className="flex items-center gap-2 mb-6">
+      {/* <div className="flex items-center gap-2 mb-6">
         <div className="w-10 h-10 rounded-full border border-grey-border flex items-center justify-center shrink-0">
           <Calendar className="w-5 h-5 text-[#333]" />
         </div>
@@ -32,7 +32,7 @@ const DashboardClient = () => {
             This Month
           </span>
         </div>
-      </div>
+      </div> */}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 mb-4 w-full">
         <FetchLoadingAndEmptyState
@@ -53,29 +53,29 @@ const DashboardClient = () => {
           <>
             <StatCard
               title="Total Revenue Generated"
-              value={formatCurrency(overview?.totalRevenue || 0)}
-              percentage="12%"
+              value={formatCurrency(overview?.totalTx || 0)}
+              // percentage="12%"
             />
             <StatCard
               title="Active Users"
               value={String(overview?.activeUsers || 0)}
-              percentage="12%"
+              // percentage="12%"
             />
             <StatCard
               title="Total Transactions"
-              value={String(overview?.totalTransactions || 0)}
-              percentage="12%"
+              value={String(overview?.totalTxCount || 0)}
+              // percentage="12%"
             />
             <StatCard
               title="Successful Transactions"
-              value={String(overview?.successfulTransactions || 0)}
-              percentage="12%"
+              value={String(overview?.todayTxCount || 0)}
+              // percentage="12%"
             />
           </>
         </FetchLoadingAndEmptyState>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-3 mb-4 w-full">
+      {/* <div className="flex flex-col lg:flex-row gap-3 mb-4 w-full">
         <SalesOverview />
 
         <div className="flex flex-col gap-3 w-full lg:w-auto shrink-0">
@@ -118,7 +118,7 @@ const DashboardClient = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <TransactionsTable />
     </main>

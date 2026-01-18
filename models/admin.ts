@@ -30,12 +30,15 @@ export interface Transaction {
 }
 
 export interface TransactionOverview {
-  totalRevenue: number;
-  totalTransactions: number;
-  successfulTransactions: number;
-  pendingTransactions: number;
-  failedTransactions: number;
   activeUsers: number;
+  thisWeekTx: number;
+  thisWeekTxCount: number;
+  todayTx: number;
+  todayTxCount: number;
+  totalTx: number;
+  totalTxCount: number;
+  totalUserBalance: string;
+  totalUsers: number;
 }
 
 export interface TransactionsResponse {

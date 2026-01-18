@@ -25,12 +25,15 @@ interface GiftCardDetailsProps {
 const getStatusLabel = (status: number) => {
   const statusMap: Record<number, { label: string; className: string }> = {
     0: {
+      label: "Cancelled",
+      className: "bg-red/10 text-red",
+    },
+    1: {
       label: "Pending",
       className: "bg-orange-pending/10 text-orange-pending",
     },
-    1: { label: "Success", className: "bg-teal/10 text-teal" },
-    2: { label: "Failed", className: "bg-red/10 text-red" },
-    3: { label: "Failed", className: "bg-red/10 text-red" },
+    2: { label: "Processing", className: "bg-blue-500/10 text-blue-500" },
+    3: { label: "Completed", className: "bg-teal/10 text-teal" },
   };
   return (
     statusMap[status] || {

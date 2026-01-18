@@ -119,17 +119,17 @@ const UserClient = () => {
             <StatCard
               title="Number of Users"
               value={String(totalUsers)}
-              percentage="12%"
+              
             />
             <StatCard
               title="Active Users"
               value={String(activeUsers)}
-              percentage="12%"
+              
             />
             <StatCard
               title="Inactive Users"
               value={String(inactiveUsers)}
-              percentage="12%"
+              
             />
           </>
         </FetchLoadingAndEmptyState>

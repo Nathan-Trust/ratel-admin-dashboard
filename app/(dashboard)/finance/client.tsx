@@ -90,7 +90,7 @@ const FinanceClient = () => {
           <>
             <StatCard
               title="Total Revenue"
-              value={formatCurrency(overview?.totalRevenue || 0).replace(
+              value={formatCurrency(overview?.totalTx || 0).replace(
                 "₦",
                 ""
               )}
@@ -98,12 +98,12 @@ const FinanceClient = () => {
             />
             <StatCard
               title="Total Transactions"
-              value={String(overview?.totalTransactions || 0)}
+              value={String(overview?.totalTxCount || 0)}
               percentage="+30%"
             />
             <StatCard
               title="Successful"
-              value={String(overview?.successfulTransactions || 0)}
+              value={String(overview?.todayTxCount || 0)}
               percentage="+90%"
             />
           </>

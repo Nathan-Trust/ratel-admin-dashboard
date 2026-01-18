@@ -20,8 +20,8 @@ const menuItems = [
   { icon: Users, label: "Users", path: AdminRoutes.USERS },
   { icon: Gift, label: "Gift Cards", path: AdminRoutes.GIFT_CARD },
   { icon: Wallet, label: "Transactions", path: AdminRoutes.TRANSACTIONS },
-  { icon: TrendingUp, label: "Finance", path: AdminRoutes.FINANCE },
-  { icon: Settings, label: "Settings", path: AdminRoutes.SETTINGS },
+  // { icon: TrendingUp, label: "Finance", path: AdminRoutes.FINANCE },
+  // { icon: Settings, label: "Settings", path: AdminRoutes.SETTINGS },
 ];
 
 export function Sidebar() {

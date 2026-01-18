@@ -3,7 +3,7 @@ import { TrendingUp } from "lucide-react";
 interface StatCardProps {
   title: string;
   value: string;
-  percentage: string;
+  percentage?: string;
 }
 
 export function StatCard({ title, value, percentage }: StatCardProps) {
@@ -30,15 +30,17 @@ export function StatCard({ title, value, percentage }: StatCardProps) {
               fill="#2E9730"
             />
           </svg>
-          <span className="font-montserrat">
-            <span className="text-base font-normal text-success">
-              {percentage}
+          {percentage && (
+            <span className="font-montserrat">
+              <span className="text-base font-normal text-success">
+                {percentage}
+              </span>
+              <span className="text-xs font-normal text-[#333]">
+                {" "}
+                vs Last Month
+              </span>
             </span>
-            <span className="text-xs font-normal text-[#333]">
-              {" "}
-              vs Last Month
-            </span>
-          </span>
+          )}
         </div>
       </div>
     </div>

@@ -12,10 +12,10 @@ import { Transaction, TransactionStatusCode } from "@/models/admin";
 
 const getStatusLabel = (status: TransactionStatusCode): TransactionStatus => {
   const statusMap: Record<TransactionStatusCode, TransactionStatus> = {
-    0: "Pending",
-    1: "Success",
-    2: "Failed",
-    3: "Failed",
+    0: "Cancelled",
+    1: "Pending",
+    2: "Processing",
+    3: "Completed",
   };
   return statusMap[status] || "Pending";
 };
@@ -25,7 +25,7 @@ const getStatusElement = (status: TransactionStatusCode) => {
   return (
     <span
       className={`text-sm font-medium font-montserrat ${getTransactionStatusColor(
-        statusLabel
+        statusLabel,
       )}`}
     >
       {statusLabel}

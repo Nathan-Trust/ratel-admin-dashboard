@@ -10,7 +10,7 @@ export function Header() {
           Back!
         </h2>
       </div>
-      <div className="flex items-center gap-3">
+      {/* <div className="flex items-center gap-3">
         <button className="w-10 h-10 rounded-2xl border border-[#C2D7FF] bg-[#E6F2EB] flex items-center justify-center relative">
           <Settings className="w-6 h-6 text-[#19887F]" strokeWidth={1.5} />
         </button>
@@ -18,7 +18,7 @@ export function Header() {
           <Bell className="w-6 h-6 text-[#19887F]" strokeWidth={1.5} />
           <span className="absolute -top-1 right-0.5 w-2 h-2 bg-[#F20303] rounded-full"></span>
         </button>
-      </div>
+      </div> */}
     </header>
   );
 }
