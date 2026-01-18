@@ -11,7 +11,7 @@ import {
 interface CustomTableProps {
   title?: string;
   headers: string[];
-  data?: Record<string, React.ReactNode | string | number | null | undefined | any>[];
+  data?: Record<string, React.ReactNode | string | number | null | undefined>[];
   headerKeyMap: Record<string, string>;
   onViewAll?: () => void;
   showViewAll?: boolean;
