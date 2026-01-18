@@ -153,9 +153,11 @@ export interface UserWalletsResponse {
 export interface TransactionsParams {
   page?: number;
   transactionId?: string;
+  userId?: string;
   status?: TransactionStatusCode;
   from?: string;
   to?: string;
+  search?: string;
 }
 
 export interface UsersParams {

@@ -36,6 +36,11 @@ const formatDate = (dateString: string) => {
     .replaceAll("/", "-");
 };
 
+const truncateText = (text: string, maxLength: number = 20) => {
+  if (text.length <= maxLength) return text;
+  return text.substring(0, maxLength) + "...";
+};
+
 const getStatusBadge = (status: number) => {
   const statusMap: Record<number, { label: string; className: string }> = {
     0: {
@@ -94,7 +99,7 @@ const GiftCardClient = () => {
   const giftCardTransactions: GiftCardTransaction[] = filteredData.map(
     (tx: Transaction) => ({
       id: tx.id,
-      giftCardName: tx.package || "Unknown",
+      giftCardName: truncateText(tx.package || "Unknown", 25),
       provider: tx.provider || "N/A",
       country: tx.country || "N/A",
       recipient: tx.recipient || "N/A",

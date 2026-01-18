@@ -116,7 +116,7 @@ export function TransactionsTable() {
       ),
       giftCardType: t.package || "N/A",
       country: t.country || "N/A",
-      provider: t.provider || "N/A",
+      provider: t.provider || "gloe-sim",
       amount: formatCurrency(t.amount),
       status: getStatusElement(t.status as TransactionStatusCode),
       actions: (

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import CustomTable from "@/components/shared/CustomTable";
 import { TransactionDetailsModal } from "@/components/transactions/transaction-details-modal";
@@ -55,13 +55,31 @@ const formatDateTime = (dateString: string) => {
   return `${formattedDate} - ${formattedTime}`;
 };
 
+const truncateText = (text: string, maxLength: number = 20) => {
+  if (text.length <= maxLength) return text;
+  return text.substring(0, maxLength) + "...";
+};
+
 const TransactionClient = () => {
   const [selectedTransaction, setSelectedTransaction] = useState<any>(null);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
   const [page] = useState(1);
 
-  const { data, isLoading } = useTransactions({ page });
+  // Debounce search query
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(searchQuery);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
+
+  const { data, isLoading } = useTransactions({
+    page,
+    transactionId: debouncedSearch || undefined,
+  });
   const transactionsData = data?.data?.transactions || [];
 
   const handleViewTransaction = (transaction: Transaction) => {
@@ -85,9 +103,9 @@ const TransactionClient = () => {
     ) : (
       t.user?.name || t.recipient || "N/A"
     ),
-    giftCardType: t.package || "N/A",
+    giftCardType: truncateText(t.package || "N/A", 25),
     country: t.country || "N/A",
-    provider: t.provider || "N/A",
+    provider: t.provider || "gloe-sim",
     amount: formatCurrency(Number(t.amount)),
     status: getStatusElement(t.status as TransactionStatusCode),
     actions: (
