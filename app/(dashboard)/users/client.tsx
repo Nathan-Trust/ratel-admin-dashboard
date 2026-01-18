@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Eye } from "lucide-react";
 import { StatCard } from "@/components/dashboard/StatCard";
 import CustomTable from "@/components/shared/CustomTable";
 import { CustomTableSkeleton } from "@/components/shared/CustomTableSkeleton";
@@ -54,7 +55,7 @@ const UserClient = () => {
   const totalUsers = pagination?.total || 0;
   const activeUsers = usersData.filter((u: AdminUser) => u.status === 1).length;
   const inactiveUsers = usersData.filter(
-    (u: AdminUser) => u.status === 0
+    (u: AdminUser) => u.status === 0,
   ).length;
 
   const handleViewUser = (userId: string) => {
@@ -71,9 +72,10 @@ const UserClient = () => {
     actions: (
       <button
         onClick={() => handleViewUser(u.id)}
-        className="px-3 py-1.5 rounded-xl border cursor-pointer border-[#8C8C8C] bg-teal text-white text-sm font-semibold font-montserrat hover:bg-teal/90 transition-colors"
+        className="w-8 h-8 flex items-center cursor-pointer justify-center rounded-lg bg-teal/10 text-teal hover:bg-teal hover:text-white transition-colors"
+        title="View Details"
       >
-        View
+        <Eye className="w-4 h-4" />
       </button>
     ),
   }));
@@ -116,21 +118,9 @@ const UserClient = () => {
           emptyState={null}
         >
           <>
-            <StatCard
-              title="Number of Users"
-              value={String(totalUsers)}
-              
-            />
-            <StatCard
-              title="Active Users"
-              value={String(activeUsers)}
-              
-            />
-            <StatCard
-              title="Inactive Users"
-              value={String(inactiveUsers)}
-              
-            />
+            <StatCard title="Number of Users" value={String(totalUsers)} />
+            <StatCard title="Active Users" value={String(activeUsers)} />
+            <StatCard title="Inactive Users" value={String(inactiveUsers)} />
           </>
         </FetchLoadingAndEmptyState>
       </div>

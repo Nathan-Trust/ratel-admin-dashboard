@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Eye } from "lucide-react";
 import CustomTable from "@/components/shared/CustomTable";
 import { TransactionDetailsModal } from "@/components/transactions/transaction-details-modal";
 import { CustomTableSkeleton } from "@/components/shared/CustomTableSkeleton";
@@ -127,15 +128,16 @@ const TransactionClient = () => {
       </div>
     ),
     country: t.country || "N/A",
-    provider: t.provider || "gloe-sim",
+    provider: t.provider || "gloEsim",
     amount: formatCurrency(Number(t.amount)),
     status: getStatusElement(t.status as TransactionStatusCode),
     actions: (
       <button
         onClick={() => handleViewTransaction(t)}
-        className="px-3 py-1.5 rounded-xl border cursor-pointer border-[#8C8C8C] bg-teal text-white text-sm font-semibold font-montserrat hover:bg-teal/90 transition-colors"
+        className="w-8 h-8 flex items-center cursor-pointer justify-center rounded-lg bg-teal/10 text-teal hover:bg-teal hover:text-white transition-colors"
+        title="View Details"
       >
-        View
+        <Eye className="w-4 h-4" />
       </button>
     ),
   }));
