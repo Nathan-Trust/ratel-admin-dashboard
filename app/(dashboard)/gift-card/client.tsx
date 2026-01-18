@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import CustomTable from "@/components/shared/CustomTable";
 import { GiftCardDetails } from "@/components/gift-card/gift-card-details";
 import CustomHeader from "@/components/shared/CustomHeader";
@@ -15,7 +16,7 @@ interface GiftCardTransaction {
   id: string;
   giftCardName: React.ReactNode;
   country: string;
-  recipient: string;
+  recipient: React.ReactNode;
   dateAdded: string;
   amount: string;
   status: React.ReactNode;
@@ -126,7 +127,16 @@ const GiftCardClient = () => {
       ),
       provider: tx.provider || "N/A",
       country: tx.country || "N/A",
-      recipient: tx.recipient || "N/A",
+      recipient: tx.userId ? (
+        <Link
+          href={`/users/${tx.userId}`}
+          className="text-teal hover:underline font-medium"
+        >
+          {tx.recipient || "N/A"}
+        </Link>
+      ) : (
+        tx.recipient || "N/A"
+      ),
       dateAdded: formatDate(tx.createdAt),
       amount: formatCurrency(Number(tx.amount) || 0),
       status: getStatusBadge(tx.status),
@@ -134,7 +144,7 @@ const GiftCardClient = () => {
         <div className="flex items-center justify-center gap-2">
           <button
             onClick={() => handleViewTransaction(tx)}
-            className="w-8 h-8 flex items-center justify-center rounded-lg bg-teal/10 text-teal hover:bg-teal hover:text-white transition-colors"
+            className="w-8 h-8 flex items-center cursor-pointer justify-center rounded-lg bg-teal/10 text-teal hover:bg-teal hover:text-white transition-colors"
             title="View Details"
           >
             <Eye className="w-4 h-4" />

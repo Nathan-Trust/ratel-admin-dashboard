@@ -71,7 +71,7 @@ const UserClient = () => {
     actions: (
       <button
         onClick={() => handleViewUser(u.id)}
-        className="px-3 py-1.5 rounded-xl border border-[#8C8C8C] bg-teal text-white text-sm font-semibold font-montserrat hover:bg-teal/90 transition-colors"
+        className="px-3 py-1.5 rounded-xl border cursor-pointer border-[#8C8C8C] bg-teal text-white text-sm font-semibold font-montserrat hover:bg-teal/90 transition-colors"
       >
         View
       </button>

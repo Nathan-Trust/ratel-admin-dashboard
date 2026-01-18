@@ -133,7 +133,7 @@ const TransactionClient = () => {
     actions: (
       <button
         onClick={() => handleViewTransaction(t)}
-        className="px-3 py-1.5 rounded-xl border border-[#8C8C8C] bg-teal text-white text-sm font-semibold font-montserrat hover:bg-teal/90 transition-colors"
+        className="px-3 py-1.5 rounded-xl border cursor-pointer border-[#8C8C8C] bg-teal text-white text-sm font-semibold font-montserrat hover:bg-teal/90 transition-colors"
       >
         View
       </button>
@@ -141,8 +141,8 @@ const TransactionClient = () => {
   }));
 
   const headers = [
-    "USER NAME",
     "GIFT CARD TYPE",
+    "USER NAME",
     "COUNTRY",
     "PROVIDER",
     "AMOUNT",
@@ -151,8 +151,8 @@ const TransactionClient = () => {
   ];
 
   const headerKeyMap = {
-    "USER NAME": "userName",
     "GIFT CARD TYPE": "giftCardType",
+    "USER NAME": "userName",
     COUNTRY: "country",
     PROVIDER: "provider",
     AMOUNT: "amount",
