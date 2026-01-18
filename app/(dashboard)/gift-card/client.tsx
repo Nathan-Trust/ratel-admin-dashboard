@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import CustomTable from "@/components/shared/CustomTable";
 import { GiftCardDetails } from "@/components/gift-card/gift-card-details";
 import CustomHeader from "@/components/shared/CustomHeader";
@@ -12,7 +13,7 @@ import { Transaction } from "@/models/admin";
 
 interface GiftCardTransaction {
   id: string;
-  giftCardName: string;
+  giftCardName: React.ReactNode;
   country: string;
   recipient: string;
   dateAdded: string;
@@ -99,7 +100,30 @@ const GiftCardClient = () => {
   const giftCardTransactions: GiftCardTransaction[] = filteredData.map(
     (tx: Transaction) => ({
       id: tx.id,
-      giftCardName: truncateText(tx.package || "Unknown", 25),
+      giftCardName: (
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
+            {tx.image ? (
+              <Image
+                src={tx.image}
+                alt={tx.package || "Gift card"}
+                width={32}
+                height={32}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-teal to-teal-light flex items-center justify-center">
+                <span className="text-white text-xs font-bold">
+                  {(tx.package || "U")[0].toUpperCase()}
+                </span>
+              </div>
+            )}
+          </div>
+          <span className="text-sm">
+            {truncateText(tx.package || "Unknown", 25)}
+          </span>
+        </div>
+      ),
       provider: tx.provider || "N/A",
       country: tx.country || "N/A",
       recipient: tx.recipient || "N/A",
@@ -133,7 +157,7 @@ const GiftCardClient = () => {
 
   const headerKeyMap = {
     "GIFT CARD": "giftCardName",
-    "PROVIDER": "provider",
+    PROVIDER: "provider",
     COUNTRY: "country",
     RECIPIENT: "recipient",
     DATE: "dateAdded",

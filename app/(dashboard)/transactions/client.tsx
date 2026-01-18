@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import CustomTable from "@/components/shared/CustomTable";
 import { TransactionDetailsModal } from "@/components/transactions/transaction-details-modal";
 import { CustomTableSkeleton } from "@/components/shared/CustomTableSkeleton";
@@ -103,7 +104,28 @@ const TransactionClient = () => {
     ) : (
       t.user?.name || t.recipient || "N/A"
     ),
-    giftCardType: truncateText(t.package || "N/A", 25),
+    giftCardType: (
+      <div className="flex items-center gap-2">
+        <div className="w-8 h-8 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
+          {t.image ? (
+            <Image
+              src={t.image}
+              alt={t.package || "Gift card"}
+              width={32}
+              height={32}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-teal to-teal-light flex items-center justify-center">
+              <span className="text-white text-xs font-bold">
+                {(t.package || "N")[0].toUpperCase()}
+              </span>
+            </div>
+          )}
+        </div>
+        <span className="text-sm">{truncateText(t.package || "N/A", 25)}</span>
+      </div>
+    ),
     country: t.country || "N/A",
     provider: t.provider || "gloe-sim",
     amount: formatCurrency(Number(t.amount)),
